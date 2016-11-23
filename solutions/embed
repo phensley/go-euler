@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+
+import os, sys
+from glob import glob
+
+
+TEMPLATE = '''
+package %s
+
+// WARNING: auto-generated file: DO NOT EDIT!
+
+var (
+    rawfiles = map[string][]byte {
+%s
+    }
+)
+
+'''
+
+
+def fail(m):
+    sys.stderr.write(m + '\n')
+    sys.exit(1)
+
+def to_bytes(data, indent=4):
+    ind = ' '*indent
+    r = [ind]
+    for i, c in enumerate(data):
+        if i and i % 15 == 0:
+            r.append('\n' + ind)
+        elif i:
+            r.append(' ')
+        r.append('0x%02x,' % ord(c))
+    return ''.join(r)
+
+def main():
+    cwd = os.getcwd()
+    args = sys.argv[1:]
+    if len(args) < 2:
+        fail('Usage: %s package file [file0 .. fileN]' % sys.argv[0])
+    
+    package, names = args[0], args[1:]
+
+    paths = [os.path.join(cwd, n) for n in names]
+    paths = [g for n in names for g in glob(n)]
+
+    mapping = []
+    for i, path in enumerate(paths):
+        name = os.path.basename(path)
+        if not os.path.exists(path):
+            fail('File not found: %r' % path)
+        data = open(path, 'rb').read()
+        mapping.append('\n        "%s": []byte{\n%s\n        },' %
+            (name, to_bytes(data, 12)))
+
+    body = TEMPLATE % (package, ''.join(mapping))
+    path = os.path.join(cwd, 'rawfiles.go')
+    open(path, 'w').write(body)
+
+if __name__ == '__main__':
+    main()
+

@@ -1,0 +1,6 @@
+package: github.com/phensley/go-euler
+import:
+- package: github.com/spf13/pflag
+- package: github.com/stretchr/testify
+  subpackages:
+  - assert

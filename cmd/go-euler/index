@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+
+import os, re, sys
+
+
+PWD = os.path.dirname(os.path.realpath(__file__))
+RE_PROBLEM = re.compile('^\d+$')
+
+BODY = '''
+
+package main
+
+// WARNING: auto-generated file: DO NOT EDIT!
+
+import (
+%s
+)
+
+'''
+IMPORT = '    _ "github.com/phensley/go-euler/solutions/%s"'
+
+
+def main():
+    spath = os.path.join(PWD, '..', '..', 'solutions')
+    names = [n for n in os.listdir(spath) if RE_PROBLEM.match(n)]
+    body = BODY % '\n'.join(IMPORT % n for n in sorted(names))
+    path = os.path.join(PWD, 'solutions.go')
+    open(path, 'w').write(body)
+
+if __name__ == '__main__':
+    main()
+

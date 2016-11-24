@@ -15,7 +15,7 @@ func init() {
 }
 
 func solve(ctx *euler.Context) {
-	data := string(rawfiles["p079_keylog.txt"])
+	data := rawfiles["p079_keylog.txt"]
 	lines := strings.Split(data, "\n")
 
 	s := solution{make(map[int]map[int]*struct{})}

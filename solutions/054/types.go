@@ -138,11 +138,11 @@ func (r rank) String() string {
 	case fullHouse:
 		return "full house"
 	case fourOfAKind:
-		return "fourOfAKind"
+		return "four of a kind"
 	case straightFlush:
-		return "straightFlush"
+		return "straight flush"
 	case royalFlush:
-		return "royalFlush"
+		return "royal flush"
 	}
 
 	fmt.Printf("invalid rank!  %#v", r)

@@ -252,7 +252,7 @@ func (p *puzzle) String() string {
 }
 
 func loadPuzzles() []*puzzle {
-	data := string(rawfiles["p096_sudoku.txt"])
+	data := rawfiles["p096_sudoku.txt"]
 	lines := strings.Split(data, "\n")
 	i := 0
 	res := []*puzzle{}

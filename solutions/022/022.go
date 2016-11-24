@@ -15,7 +15,7 @@ func init() {
 }
 
 func solve(ctx *euler.Context) {
-	text := string(rawfiles["p022_names.txt"])
+	text := rawfiles["p022_names.txt"]
 	lines := strings.Split(text, ",")
 	names := []string{}
 	for _, line := range lines {

@@ -23,7 +23,7 @@ func solve(ctx *euler.Context) {
 	}
 
 	player1Wins := 0
-	lines := strings.Split(string(rawfiles["p054_poker.txt"]), "\n")
+	lines := strings.Split(rawfiles["p054_poker.txt"], "\n")
 	for _, line := range lines {
 		cards := strings.Split(line, " ")
 		if len(cards) != 10 {

@@ -29,7 +29,7 @@ func solve(ctx *euler.Context) {
 		}
 	}
 
-	data := string(rawfiles["p089_roman.txt"])
+	data := rawfiles["p089_roman.txt"]
 	saved := 0
 	for _, num := range strings.Split(data, "\n") {
 		// Find canonical form

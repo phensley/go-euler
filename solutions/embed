@@ -10,9 +10,9 @@ package %s
 // WARNING: auto-generated file: DO NOT EDIT!
 
 var (
-    rawfiles = map[string][]byte {
+\trawfiles = map[string]string {
 %s
-    }
+\t}
 )
 
 '''
@@ -22,16 +22,16 @@ def fail(m):
     sys.stderr.write(m + '\n')
     sys.exit(1)
 
-def to_bytes(data, indent=4):
-    ind = ' '*indent
-    r = [ind]
+def to_bytes(data, indent):
+    ind = '\t'*indent
+    r = [ind + '"']
     for i, c in enumerate(data):
-        if i and i % 15 == 0:
-            r.append('\n' + ind)
-        elif i:
-            r.append(' ')
-        r.append('0x%02x,' % ord(c))
+        if i and i % 25 == 0:
+            r.append('" +\n' + ind + '"')
+        r.append('\\x%02x' % ord(c))
+    r.append('"')
     return ''.join(r)
+
 
 def main():
     cwd = os.getcwd()
@@ -50,8 +50,8 @@ def main():
         if not os.path.exists(path):
             fail('File not found: %r' % path)
         data = open(path, 'rb').read()
-        mapping.append('\n        "%s": []byte{\n%s\n        },' %
-            (name, to_bytes(data, 12)))
+        data = to_bytes(data, 3)
+        mapping.append('\n\t\t"%s": "" +\n%s,\n' % (name, data))
 
     body = TEMPLATE % (package, ''.join(mapping))
     path = os.path.join(cwd, 'rawfiles.go')

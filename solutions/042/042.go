@@ -14,7 +14,7 @@ func init() {
 }
 
 func solve(ctx *euler.Context) {
-	lines := strings.Split(string(rawfiles["p042_words.txt"]), ",")
+	lines := strings.Split(rawfiles["p042_words.txt"], ",")
 	t := &triangles{0, make(map[int]*struct{}), 1}
 
 	count := 0

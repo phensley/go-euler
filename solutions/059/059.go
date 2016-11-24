@@ -184,7 +184,7 @@ func decrypt(passlen int, ciphertext []byte) int {
 
 func readCiphertext() []byte {
 	res := []byte{}
-	input := strings.TrimSpace(string(rawfiles["p059_cipher.txt"]))
+	input := strings.TrimSpace(rawfiles["p059_cipher.txt"])
 	for _, s := range strings.Split(input, ",") {
 		code, err := strconv.ParseInt(s, 10, 8)
 		failIf(err)

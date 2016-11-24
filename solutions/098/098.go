@@ -129,7 +129,7 @@ func indexAnagram(w1, w2 *word) []int {
 }
 
 func readWords() wordlist {
-	raw := strings.Split(string(rawfiles["p098_words.txt"]), ",")
+	raw := strings.Split(rawfiles["p098_words.txt"], ",")
 	words := make(wordlist, len(raw))
 	for i, w := range raw {
 		w = w[1 : len(w)-1]

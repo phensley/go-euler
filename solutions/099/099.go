@@ -25,7 +25,7 @@ func solve(ctx *euler.Context) {
 }
 
 func calculate() int {
-	data := string(rawfiles["p099_base_exp.txt"])
+	data := rawfiles["p099_base_exp.txt"]
 	lines := strings.Split(data, "\n")
 	nums := make(numberlist, len(lines))
 	for i, line := range lines {

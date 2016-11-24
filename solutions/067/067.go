@@ -22,7 +22,7 @@ func solve(ctx *euler.Context) {
 }
 
 func readTriangle() [][]int {
-	lines := strings.Split(string(rawfiles["p067_triangle.txt"]), "\n")
+	lines := strings.Split(rawfiles["p067_triangle.txt"], "\n")
 
 	rows := [][]int{}
 	for _, line := range lines {

@@ -28,7 +28,7 @@ func solve(ctx *euler.Context) {
 		fmt.Println("known: ", compute(known))
 	}
 
-	unknown := euler.ReadMatrix(string(rawfiles["p082_matrix.txt"]))
+	unknown := euler.ReadMatrix(rawfiles["p082_matrix.txt"])
 	answer := fmt.Sprintf("%d", compute(unknown))
 	ctx.SetAnswer(answer)
 }

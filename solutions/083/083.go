@@ -39,7 +39,7 @@ func solve(ctx *euler.Context) {
 		fmt.Println("edge case: ", compute(edgeCase))
 	}
 
-	unknown := euler.ReadMatrix(string(rawfiles["p083_matrix.txt"]))
+	unknown := euler.ReadMatrix(rawfiles["p083_matrix.txt"])
 	answer := fmt.Sprintf("%d", compute(unknown))
 	ctx.SetAnswer(answer)
 }

@@ -57,7 +57,7 @@ Hand frequencies:
 
 ## Solutions
 
-Solving the first 100 problems takes just under 10 seconds.
+Solving the first 100 problems takes just under 10 seconds on a 2010 Mac Pro 3.33 GHz Xeon cpu.
 
 Depending on my level of interest I've taken a deeper dive on some problems and
 not others. Some frequently-reused routines have been developed and optimized
